@@ -11,6 +11,7 @@ class Ingridient(models.Model):
     LITER = 'L'
     MILILITER = 'ML'
     PIECE = 'PC'
+    PACK = 'PK'
     TABLESPOON = 'TS'
     TEASPOON = 'TE'
     UNIT_CHOICES = [
@@ -22,6 +23,7 @@ class Ingridient(models.Model):
         (PIECE, 'piece/s'),
         (TABLESPOON, 'table spoon'),
         (TEASPOON, 'tea spoon'),
+        (PACK, 'pack'),
     ]
     name = models.CharField(max_length=100)
     quantity = models.FloatField()
