@@ -4,7 +4,7 @@ from django.views.generic import ListView, View, TemplateView, CreateView, Delet
 from django.views.generic import YearArchiveView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .utils import count_profit_revenue
+# from .utils import count_profit_revenue
 from .models import Ingridient, MenuItem, Purchase, RecipeRequirement
 from .filters import PurchaseFilter, IngridientFilter
 from .forms import IngridientForm, RecipeRequirementForm, MenuItemCreateForm, RecipeRequirementFormSet
