@@ -84,7 +84,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "gettingstarted.wsgi.application"
+WSGI_APPLICATION = "restaurant.wsgi.application"
 
 
 # Database
