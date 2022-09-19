@@ -113,15 +113,15 @@ class PurchaseListView(CustomLoginRequiredMixin, TemplateView):
         
 
 
-class ProfitRevenueView(TemplateView):
-    template_name = 'inventory/profit-revenue.html'
-    purchases = Purchase.objects.all()
-    revenue, profit = count_profit_revenue(purchases)
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs) 
-        context['revenue'] = self.revenue
-        context['profit'] = self.profit
-        return context
+# class ProfitRevenueView(TemplateView):
+#     template_name = 'inventory/profit-revenue.html'
+#     purchases = Purchase.objects.all()
+#     revenue, profit = count_profit_revenue(purchases)
+#     def get_context_data(self, *args, **kwargs):
+#         context = super().get_context_data(**kwargs) 
+#         context['revenue'] = self.revenue
+#         context['profit'] = self.profit
+#         return context
 
 
 class Home(TemplateView):
