@@ -4,7 +4,7 @@ from django.views.generic import ListView, View, TemplateView, CreateView, Delet
 from django.views.generic import YearArchiveView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-# from .utils import count_profit_revenue
+from .utils import count_profit_revenue
 from .models import Ingridient, MenuItem, Purchase, RecipeRequirement
 from .filters import PurchaseFilter, IngridientFilter
 from .forms import IngridientForm, RecipeRequirementForm, MenuItemCreateForm, RecipeRequirementFormSet
@@ -89,14 +89,14 @@ class PurchaseListView(CustomLoginRequiredMixin, TemplateView):
             purchases[purchase]['timestamp'] = purchase.timestamp
             purchases[purchase]['profit'] = purchase.menu_item.price - purchase_revenue
 
-#         revenue, profit = count_profit_revenue(purchases.keys())
+        revenue, profit = count_profit_revenue(purchases.keys())
         
 
         context = {
             'purchases_dict': purchases,
             'myFilter': f,
-#             'revenue': revenue,
-#             'profit': profit,
+            'revenue': revenue,
+            'profit': profit,
         }
 
         return render(request, 'inventory/purchase-list.html', context)
