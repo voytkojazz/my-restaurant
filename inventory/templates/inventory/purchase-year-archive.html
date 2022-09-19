@@ -1,0 +1,18 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<ul>
+    {% for date in date_list %}
+        <li>{{ date|date }}</li>
+    {% endfor %}
+</ul>
+
+<div>
+    <h1>All Purchases for {{ year|date:"Y" }}</h1>
+    {{revenue}} {{profit}}
+    {% for obj in object_list %}
+        <p>
+            {{ obj.menu_item.title }} - {{ obj.timestamp|date:"F j, Y" }}
+        </p>
+    {% endfor %}
+</div>
+{% endblock content %}

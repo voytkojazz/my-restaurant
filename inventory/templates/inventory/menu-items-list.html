@@ -1,0 +1,55 @@
+{% extends 'inventory/base.html' %}
+{% block title %}Menu{% endblock title %}
+{% block content %}
+<div class="container-xl">
+    <div class="d-flex flex-row bd-highlight align-items-center py-3 buttons-container">
+
+        
+
+
+
+
+        <a href="{% url 'menu-item-create' %}" class="btn btn-outline-dark mx-3" role="button">Add New</a>
+
+    </div>
+
+
+
+
+    <div class="table-responsive">
+        <table class="table table-borderless inventory-table">
+            {% csrf_token %}
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Title</th>
+                    <th>Ingridients</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for menu_item in menu_items_list %}
+                <tr>
+                    <td><a role="button" class="btn btn-outline-danger btn-sm mb-4"
+                        href="{% url 'menu-item-requirements' menu_item.id %}">Ingridients</a></td>
+                    <td>{{ menu_item.title }}</td>
+                    <td>
+                        {% for ingridient in menu_item.reciperequirement_set.all %}
+                        <span>
+                            {% if forloop.first %}{{ ingridient.ingridient.name }}
+                            {% elif forloop.last %} and {{ ingridient.ingridient.name }}{% else %},
+                            {{ ingridient.ingridient.name }}{% endif %}
+                            {% endfor %} 
+                        </span>
+
+
+                    </td>
+                    <td>${{ menu_item.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+
+<html lang="en">
+    {% include 'inventory/head.html' %}
+<body>
+    <div class="form-container">
+        <div class="shadow p-3 mb-3 bg-body rounded">
+        {% if form.errors %}
+        {% for error in form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy .h.t!</strong>{{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+        {% endif %}
+        <form action="{% url 'register-page' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-dark" value="Register">
+        </form></div>
+    </div>
+</body>
+</html>

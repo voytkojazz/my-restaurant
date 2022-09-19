@@ -1,0 +1,27 @@
+<html lang="en">
+
+{% include 'inventory/head.html' %}
+{% include 'inventory/header.html' %}
+<body>
+    
+    {% block content %}
+    {% endblock content %}
+</body>
+<footer>
+    {% block footer %}
+    {% include 'inventory/footer.html' %}
+    {% endblock footer %}
+    <script>
+        jQuery(function($) {
+            var path = window.location.href; 
+            // because the 'href' property of the DOM element is the absolute path
+            $('ul a').each(function() {
+              if (this.href === path) {
+                $(this).addClass('disabled');
+              }
+            });
+          });
+    </script>
+</footer>
+
+</html>

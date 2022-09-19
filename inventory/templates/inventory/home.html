@@ -1,0 +1,43 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+<div class="container-xl">
+
+  <div class="shadow p-3 mx-4 bg-body rounded">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Hola! </strong>{{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+    <h2 class='mt-4 mb-4'>Welcome to Restaurant Managing System 1.0 Beta!</h2>
+    <p>This web sites serves as an example Dashboard for Restraurant to track restaurants <u>INVENTORY</u> (ingridients for cooking menu items),
+ <u>PURCHASES</u> and <u>MENU ITEMS.</u></p>
+ <p>You can ADD, EDIT, VIEW and DELETE all of this items. They are related between each other. For example each Menu Item has it's recipe requirements. Basically it has information of what ingridients and amounts are needed
+   to cook the dish. You can easily edit the requirements and menu items on the menu page.</p>
+   <p>The Purchases section shows the TIME and MENU ITEM of all made purchases in the restaurant. It has a custom search and shows total profit and revenue for certain period of time. 
+    <u>EACH TIME A PURCHASE MADE</u> - the app subtracts amount of used ingridients from related Ingridient.
+   </p>
+  <p>INGRIDIENT section shows all available ingridient records in the inventory. Each of the items has price, quntity, name and the unit of measurment.</p>
+   <p><u>YOU MUST LOG IN IN ORDER TO USE FUNCTIONALITY.</u> The app has built-in user authentication system. If you do not want to register a new account, you can login with following credentials:</p>
+   <p>Login: admin</p>
+   <p>Pass: ichbinross123 </p>
+    {% if user.is_authenticated %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+      <a role="button" class="btn btn-lg btn-outline-secondary mt-4 mb-5" href="{% url 'logout-page' %}">Log out</a>
+    </div>
+    {% else %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+      <a href="{% url 'login-page' %}" class="btn btn-lg btn-outline-secondary me-md-2" type="button">Log In</a>
+      <a href="{% url 'register-page' %}" class="btn btn-lg btn-outline-secondary" type="button">Register</a>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock content %}

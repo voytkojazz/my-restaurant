@@ -1,0 +1,13 @@
+<form method="get">
+    <div class="form-wrapper d-flex flex-row-reverse mx-3 align-items-center">
+        {% for field in myFilter.form %}
+        <div class="field-wrapper purchase">
+            
+            {{field}}
+            
+        </div>
+        {% endfor %}
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+
+</form>

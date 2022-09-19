@@ -1,0 +1,20 @@
+<header>
+    <ul class="nav justify-content-center main-navigation">
+        <li class="nav-item link-navigation">
+          <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item link-navigation">
+          <a class="nav-link" href="{% url 'ingridients-list' %}">Ingridients</a>
+        </li>
+        <li class="nav-item link-navigation">
+          <a class="nav-link" href="{% url 'menu-items-list' %}">Menu</a>
+        </li>
+        <li class="nav-item link-navigation">
+          <a class="nav-link" href="{% url 'purchase-list' %}">Purchases</a>
+        </li>
+        {% comment %} <li class="nav-item link-navigation">
+          <a class="nav-link" href="{% url 'profit-revenue' %}">Profit Report</a>
+        </li> {% endcomment %}
+
+      </ul>
+</header>

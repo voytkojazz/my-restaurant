@@ -1,0 +1,20 @@
+<html lang="en">
+{% include 'inventory/head.html' %}
+<body>
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var inputElements = document.querySelectorAll('input');
+        for (let elem of inputElements) {
+            elem.classList.add('form-control');
+        };
+    </script>
+</body>
+</html>

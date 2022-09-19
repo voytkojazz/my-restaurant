@@ -1,0 +1,29 @@
+<form method="get">
+    <div class="form-wrapper d-flex flex-row-reverse mx-3 align-items-center">
+
+        
+    
+    <div class="field-wrapper">
+        
+        {{myFilter.form.end_date.label_tag}}
+        {{myFilter.form.end_date}}
+    </div>
+    {{field.errors}}
+    <div class="field-wrapper">
+        
+        {{myFilter.form.start_date.label_tag}}
+        {{myFilter.form.start_date}}
+    </div>
+    {{field.errors}}
+
+    <div class="field-wrapper">
+        {{myFilter.form.menu_item.label_tag}}
+        {{myFilter.form.menu_item}}
+        
+            
+        </span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Search</button>
+</div>
+</form>

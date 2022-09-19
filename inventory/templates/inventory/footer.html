@@ -1,0 +1,58 @@
+{% block footer %}
+
+
+{% comment %} SCRIPT TO SEND ID NUMBERS FOR DELETION {% endcomment %}
+
+
+<script>
+    $(document).ready(function () {
+        $('#delete-btn').click(function () {
+            if (confirm('Are you sure you want to delete this ingridients?')) {
+                var id = [];
+                var csrf = $('input[name=csrfmiddlewaretoken]').val();
+                $(':checkbox:checked').each(function (i) {
+                    id[i] = $(this).val()
+                })
+                if (id.length === 0) {
+                    alert('Please select items to delete!')
+                } else {
+                    console.log(id)
+                    $.ajax({
+                        url: '',
+                        method: 'POST',
+                        data: {
+                            id,
+                            csrfmiddlewaretoken: csrf,
+                        },
+                    }).done(function () {
+                        request = false;
+                        for (var i = 0; i < id.length; i++) {
+                            $('.disapearing' + id[i]).css('background-color', '#ccc');
+                            $('.disapearing' + id[i]).fadeOut('slow');
+                        }
+                    });
+                };
+            };
+
+        });
+    });
+</script>
+
+{% comment %} SCRIPT FOR SELECT ALL {% endcomment %}
+
+<script>
+    $(document).ready(function () {
+        $("#select-all").click(function () {
+            if (this.checked) {
+                $('.checkbox-to-delete').each(function () {
+                    $(".checkbox-to-delete").prop('checked', true);
+                })
+            } else {
+                $('.checkbox-to-delete').each(function () {
+                    $(".checkbox-to-delete").prop('checked', false);
+                })
+            }
+        });
+    });
+</script>
+{% endblock footer %}

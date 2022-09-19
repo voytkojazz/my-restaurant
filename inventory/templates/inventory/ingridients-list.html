@@ -1,0 +1,62 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block content %}
+
+<div class="container-xl">
+    <div class="d-flex flex-row bd-highlight align-items-center py-3 buttons-container">
+        {% if user.is_authenticated %}
+        <button type="button" id="delete-btn" class="btn btn-outline-danger mx-3">Delete</button>
+        <input type="checkbox" class="btn-check mx-3" id="select-all">
+        <label class="btn btn-outline-secondary" for="select-all">Select All</label><br>
+        {% else %}
+        {% endif %}
+
+
+        
+
+        <a href="{% url 'ingridient-create' %}" class="btn btn-outline-dark mx-3" role="button">Add New</a>
+
+        {% include 'inventory/ingridient-filter.html' %}
+    </div>
+
+
+    <div class="table-responsive">
+        <table class="table table-borderless inventory-table">
+            {% csrf_token %}
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Unit Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingridient in all_ingridients %}
+                <tr class="disapearing{{ingridient.id}}">
+                    <td>
+
+                        <div>
+                            {% if not user.is_authenticated %}
+                            {% else %}
+                            <input class="checkbox-to-delete" type="checkbox" id="checkboxNoLabel" aria-label="..." value="{{ ingridient.id }}">
+                            {% endif %}
+                            <a role="button" class="btn btn-outline-primary ms-3" href="{% url 'ingridient-update' ingridient.id %}">Edit</a>
+                        </div>
+
+                    </td>
+                    <td>{{ ingridient.name }}</td>
+                    <td>{{ ingridient.quantity|floatformat:2 }}</td>
+                    <td>{{ ingridient.get_unit_display }}</td>
+                    <td>${{ ingridient.unit_price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}
