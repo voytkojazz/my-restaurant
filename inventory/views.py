@@ -128,18 +128,18 @@ class Home(TemplateView):
     template_name = 'inventory/home.html'
     
 
-class PurchaseYearArchiveView(YearArchiveView):
-    queryset = Purchase.objects.all()
-    date_field = 'timestamp'
-    make_object_list = True
-    allow_future = False
-    template_name = 'inventory/purchase-year-archive.html'
+# class PurchaseYearArchiveView(YearArchiveView):
+#     queryset = Purchase.objects.all()
+#     date_field = 'timestamp'
+#     make_object_list = True
+#     allow_future = False
+#     template_name = 'inventory/purchase-year-archive.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['revenue'] = count_profit_revenue(context['object_list'])[0]
-        context['profit'] = count_profit_revenue(context['object_list'])[1]
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['revenue'] = count_profit_revenue(context['object_list'])[0]
+#         context['profit'] = count_profit_revenue(context['object_list'])[1]
+#         return context
 
 
 
