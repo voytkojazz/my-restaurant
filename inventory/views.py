@@ -89,14 +89,14 @@ class PurchaseListView(CustomLoginRequiredMixin, TemplateView):
             purchases[purchase]['timestamp'] = purchase.timestamp
             purchases[purchase]['profit'] = purchase.menu_item.price - purchase_revenue
 
-        revenue, profit = count_profit_revenue(purchases.keys())
+#         revenue, profit = count_profit_revenue(purchases.keys())
         
 
         context = {
             'purchases_dict': purchases,
             'myFilter': f,
-            'revenue': revenue,
-            'profit': profit,
+#             'revenue': revenue,
+#             'profit': profit,
         }
 
         return render(request, 'inventory/purchase-list.html', context)
@@ -164,7 +164,7 @@ class MenuItemCreateView(CustomLoginRequiredMixin, CreateView):
     template_name = 'inventory/menu-item-create.html'
     
 
-# @not_unautheticated_user
+@not_unautheticated_user
 def manage_requirements(request, menu_item_pk):
     menu_item = MenuItem.objects.get(pk=menu_item_pk)
     formset_class = RecipeRequirementFormSet
