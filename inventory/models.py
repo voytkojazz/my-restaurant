@@ -27,8 +27,7 @@ class Ingridient(models.Model):
     quantity = models.FloatField()
     unit = models.CharField(max_length=2, choices=UNIT_CHOICES)
     unit_price = models.FloatField()
-    slug = models.SlugField(unique=True, blank=True, null=True)
-
+    
     def __str__(self) -> str:
         return self.name
 
