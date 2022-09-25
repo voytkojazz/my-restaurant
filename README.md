@@ -1,5 +1,6 @@
 # my-restaurant
-project is deployed at https://manage-your-restaurant.herokuapp.com/
+project is deployed at https://manage-your-restaurant.herokuapp.com/ 
+It uses SQLlite db on the local machine and POSTGRES on Heroku
 
 # Description
 This web sites serves as an example Dashboard for Restraurant to track restaurants INVENTORY (ingridients for cooking menu items), PURCHASES and MENU ITEMS.
